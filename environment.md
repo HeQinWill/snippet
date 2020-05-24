@@ -42,6 +42,13 @@ conda activate heqin
 jupyter notebook --no-browser
 ```
 
+### GIT
+[初次配置](https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup)
+
+```shell
+git config --global user.name "HeQin_dell"
+git config --global user.email Will.He@outlook.com
+```
 
 
 ### Python 库安装
