@@ -27,6 +27,40 @@ tf.config.list_physical_devices('GPU') # TF2
 model.summary()
 ```
 
+- 指定运行设备并打印运行信息
+```python
+import sys
+import numpy as np
+import tensorflow as tf
+from datetime import datetime
+
+sess = tf.Session(config=tf.ConfigProto(log_device_placement=True))
+
+shape = (1500, 1500)
+
+#device_name = "/gpu:0"
+device_name = "/cpu:0"
+
+
+with tf.device(device_name):
+    random_matrix = tf.random_uniform(shape=shape,seed=2)
+    dot_operation = tf.matmul(random_matrix, tf.transpose(random_matrix))
+    sum_operation = tf.reduce_sum(dot_operation)
+
+
+startTime = datetime.now()
+with tf.Session(config=tf.ConfigProto(log_device_placement=True)) as session:
+        result = session.run(sum_operation)
+        print(result)
+
+# It can be hard to see the results on the terminal with lots of output -- add some newlines to improve readability.
+print("\n" * 5)
+print("Shape:", shape, "Device:", device_name)
+print("Time taken:", datetime.now() - startTime)
+
+print("\n" * 5)
+```
+
 ### 字体
 https://www.jetbrains.com/lp/mono/
 https://fengtalk.com/227.html
