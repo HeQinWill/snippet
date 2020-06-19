@@ -89,3 +89,59 @@ git config --global user.email Will.He@outlook.com
 ```SHELL
 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple
 ```
+
+
+### conda 环境管理
+删除未使用的的包
+```SHELL
+conda clean -a
+conda clean -p
+```
+创建一个新的环境
+```SHELL
+conda create -n heqin
+
+conda activate heqin
+conda update -n base -c defaults conda
+
+conda install ipykernel
+python -m ipykernel install --name heqin
+```
+
+通常自己安装的话需要安装的
+```
+conda install numpy
+conda install scikit-learn
+conda install tensorflow-gpu
+conda install pytorch torchvision cudatoolkit=10.1 -c pytorch
+pip install xgboost
+pip install shapely
+pip install proplot
+pip install salem
+pip install netCDF4
+pip install descartes
+conda install -c conda-forge gdal
+conda install -c conda-forge rioxarray
+```
+
+环境备份  
+[导出环境/导入环境](https://blog.csdn.net/shunaoxi2313/article/details/92003710)
+```shell
+d:
+conda activate heqin
+conda env export > conda_heqin.yaml
+conda env create -f conda_heqin.yaml
+
+pip freeze > pip_heqin.txt
+pip install -r pip_heqin.txt
+
+conda create -n new_name --clone base
+conda remove -n new_name --all
+```
+
+
+### gdal环境问题
+ERROR 4: Unable to open EPSG support file gcs.csv 问题
+[快速解决方案](https://blog.csdn.net/csdn_xuebing/java/article/details/88421708)
+将`library`文件夹下的`gata-data`文件夹拷贝到`D:\RDP\Anaconda3\envs\heqin\Lib\site-packages\GDAL-2.3.3-py3.7-win-amd64.egg-info`
+
