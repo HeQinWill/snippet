@@ -114,6 +114,7 @@ conda install numpy
 conda install scikit-learn
 conda install tensorflow-gpu
 conda install pytorch torchvision cudatoolkit=10.1 -c pytorch
+pip install fastai
 pip install xgboost
 pip install shapely
 pip install proplot
@@ -141,7 +142,13 @@ conda remove -n new_name --all
 
 
 ### gdal环境问题
-ERROR 4: Unable to open EPSG support file gcs.csv 问题
-[快速解决方案](https://blog.csdn.net/csdn_xuebing/java/article/details/88421708)
-将`library`文件夹下的`gata-data`文件夹拷贝到`D:\RDP\Anaconda3\envs\heqin\Lib\site-packages\GDAL-2.3.3-py3.7-win-amd64.egg-info`
+> ERROR 4: Unable to open EPSG support file gcs.csv 问题
 
+[快速解决方案](https://blog.csdn.net/csdn_xuebing/java/article/details/88421708)  
+将`gata-data`文件夹拷贝到`D:\RDP\Anaconda3\envs\heqin\Lib\site-packages\GDAL-2.3.3-py3.7-win-amd64.egg-info`  
+此外注意`import rioxarray`前`import gdal`,否则就得把gdal放入环境变量
+
+### shapely环境问题
+> OSError: Could not find lib geos_c.dll or load any of its variants ['D:\\RDP\\Anaconda3\\envs\\heqin\\Library\\lib\\geos_c.dll'].  
+
+将`D:\RDP\Anaconda3\envs\heqin\Lib\site-packages\shapely\DLLs`下的文件拷贝到`D:\RDP\Anaconda3\envs\heqin\Library\lib` 
