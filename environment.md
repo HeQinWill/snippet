@@ -89,7 +89,8 @@ git config --global user.email Will.He@outlook.com
 ```SHELL
 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple
 ```
-
+[删除pip安装缓存](https://blog.csdn.net/kangkanglou/article/details/78955298)
+`%LocalAppData%\pip\Cache`
 
 ### conda 环境管理
 删除未使用的的包
@@ -138,6 +139,8 @@ pip install -r pip_heqin.txt
 
 conda create -n new_name --clone base
 conda remove -n new_name --all
+
+jupyter kernelspec remove kernelname
 ```
 
 
@@ -148,7 +151,15 @@ conda remove -n new_name --all
 将`gata-data`文件夹拷贝到`D:\RDP\Anaconda3\envs\heqin\Lib\site-packages\GDAL-2.3.3-py3.7-win-amd64.egg-info`  
 此外注意`import rioxarray`前`import gdal`,否则就得把gdal放入环境变量
 
+[python使用GDAL/OGR/OSR时设置GDAL_DATA环境变量](https://blog.csdn.net/dugushangliang/article/details/89377625) 这个好像不管用！  
+在系统变量的Path中加入`D:\RDP\Anaconda3\envs\heqin\Lib\site-packages\GDAL-2.3.3-py3.7-win-amd64.egg-info`
+
+https://blog.csdn.net/u014177758/article/details/73250889
+
+https://blog.csdn.net/lhl317184403/article/details/86480875s
+
 ### shapely环境问题
 > OSError: Could not find lib geos_c.dll or load any of its variants ['D:\\RDP\\Anaconda3\\envs\\heqin\\Library\\lib\\geos_c.dll'].  
 
 将`D:\RDP\Anaconda3\envs\heqin\Lib\site-packages\shapely\DLLs`下的文件拷贝到`D:\RDP\Anaconda3\envs\heqin\Library\lib` 
+
